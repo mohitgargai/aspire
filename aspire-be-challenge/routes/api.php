@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\LoanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,11 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('register', 'register');
     Route::post('logout', 'logout');
 });
+
+Route::controller(LoanController::class)->group(function () {
+    Route::post('create-loan-request', 'createLoan');
+    Route::get('get-loans', 'getLoans');
+    Route::post('add-loan-repayment', 'addRepayment');
+    Route::post('approve-loan', 'approveLoan');
+});
+
