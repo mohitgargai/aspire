@@ -17,7 +17,7 @@ class LoanController extends Controller
         $this->middleware('auth:sanctum');
     }
 
-    public function createLoan(Request $request): JsonResponse
+    public function createLoanRequest(Request $request): JsonResponse
     {
         $request->validate([
             'amount' => 'required|regex:/^\d{1,6}(\.\d{2})?$/',
@@ -34,7 +34,7 @@ class LoanController extends Controller
             'data' => [
                 'loan_id' => $loan->id,
             ]
-        ]);
+        ], 201);
     }
 
     public function approveLoan(Request $request): JsonResponse
@@ -77,7 +77,7 @@ class LoanController extends Controller
         ]);
     }
 
-    public function getLoans(Request $request): JsonResponse
+    public function getLoansForUser(Request $request): JsonResponse
     {
         $loans = Loan::select(
             'id',
@@ -95,7 +95,7 @@ class LoanController extends Controller
         ]);
     }
 
-    public function addRepayment(Request $request): JsonResponse
+    public function addLoanRepayment(Request $request): JsonResponse
     {
         $request->validate([
             'loan_id' => 'required|numeric',

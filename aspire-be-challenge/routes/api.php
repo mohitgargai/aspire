@@ -22,9 +22,9 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::controller(LoanController::class)->group(function () {
-    Route::post('create-loan-request', 'createLoan');
-    Route::get('get-loans', 'getLoans');
-    Route::post('add-loan-repayment', 'addRepayment');
+    Route::post('create-loan-request', 'createLoanRequest');
+    Route::get('get-loans', 'getLoansForUser');
+    Route::post('add-loan-repayment', 'addLoanRepayment');
     Route::post('approve-loan', 'approveLoan');
 });
 

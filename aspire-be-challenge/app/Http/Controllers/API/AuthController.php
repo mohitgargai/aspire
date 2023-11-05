@@ -56,7 +56,7 @@ class AuthController extends Controller
             'data' => [
                 'user_id' => $user->id
             ]
-        ]);
+        ], 201);
     }
 
     public function logout(): JsonResponse
